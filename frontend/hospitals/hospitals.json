@@ -1,0 +1,23 @@
+[
+  {
+    "id": "cmr",
+    "name": "CMR HOSPITAL",
+    "location": "Hyderabad, Telangana, India",
+    "services": [
+      { "id": "opbooking", "name": "Online OP Booking", "icon": "📅", "desc": "Skip queues and book your appointment from your phone." },
+      { "id": "food", "name": "Food Delivery", "icon": "🍲", "desc": "Order meals from hospital canteens directly to the patient’s bed." },
+      { "id": "medicine", "name": "Medicine Access", "icon": "💊", "desc": "Get medicines delivered near the ward, without rushing." },
+      { "id": "tests", "name": "Tests & Scans Scheduling", "icon": "🧪", "desc": "Book tests or scans without running between centers." },
+      { "id": "emergency", "name": "Wheelchair & Emergency Requests", "icon": "♿", "desc": "One click for immediate help." }
+    ]
+  },
+  {
+    "id": "xyz",
+    "name": "XYZ Hospital",
+    "location": "Other City",
+    "services": [
+      { "id": "opbooking", "name": "Online OP Booking", "icon": "📅", "desc": "Skip queues and book your appointment from your phone." },
+      { "id": "tests", "name": "Tests & Scans Scheduling", "icon": "🧪", "desc": "Book tests or scans without running between centers." }
+    ]
+  }
+]

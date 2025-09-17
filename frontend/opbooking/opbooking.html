@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online OP Booking – MYOPcard</title>
+    <link rel="stylesheet" href="opbooking.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Online OP Booking</h1>
+            <p class="hero-cta">Skip queues and book your appointment from your phone.</p>
+        </div>
+    </header>
+    <main>
+        <section class="section">
+            <div class="container">
+                                <form id="opBookingForm" action="http://localhost:5000/api/opbooking" method="POST" enctype="multipart/form-data" autocomplete="off">
+                                        <h2>📋 OP Booking Form</h2>
+                                        <fieldset>
+                                            <legend>👤 Patient Details</legend>
+                                            <label for="fullName">Full Name*<br><input type="text" name="fullName" id="fullName" required autocomplete="name"></label><br>
+                                            <label for="dob">Date of Birth*<br><input type="date" name="dob" id="dob" required></label><br>
+                                            <label for="age">Age<br><input type="number" name="age" id="age" readonly></label><br>
+                                            <label for="gender">Gender*<br>
+                                                <select name="gender" id="gender" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </label><br>
+                                            <label for="contact">Contact Number*<br><input type="tel" name="contact" id="contact" required pattern="[0-9]{10,}" maxlength="15" autocomplete="tel" placeholder="10+ digits"></label><br>
+                                            <label for="email">Email ID<br><input type="email" name="email" id="email" autocomplete="email"></label><br>
+                                            <label for="address">Address*<br><textarea name="address" id="address" required placeholder="City/Village, District, State" autocomplete="street-address"></textarea></label><br>
+                                            <label for="aadhaar">Aadhaar/ID Number*<br><input type="text" name="aadhaar" id="aadhaar" required pattern="[0-9]{12}" maxlength="12" placeholder="12-digit Aadhaar"></label><br>
+                                            <label for="aadhaarPhoto">Aadhaar Photo*<br><input type="file" name="aadhaarPhoto" id="aadhaarPhoto" accept="image/*" required></label><br>
+                                            <label for="candidatePhoto">Candidate Photo*<br><input type="file" name="candidatePhoto" id="candidatePhoto" accept="image/*" required></label><br>
+                                        </fieldset>
+                                        <fieldset>
+                                                <legend>🏥 Hospital & Department</legend>
+                                                <label>Hospital Name*<br><input type="text" name="hospital" value="CMR HOSPITAL" readonly></label><br>
+                                                <label>Department / Specialty*<br>
+                                                        <select name="department" required>
+                                                                <option value="">Select</option>
+                                                                <option value="General Medicine">General Medicine</option>
+                                                                <option value="Cardiology">Cardiology</option>
+                                                                <option value="Orthopedics">Orthopedics</option>
+                                                                <option value="Pediatrics">Pediatrics</option>
+                                                                <option value="Gynecology">Gynecology</option>
+                                                                <option value="Other">Other</option>
+                                                        </select>
+                                                </label><br>
+                                                <label>Visit Type*<br>
+                                                        <select name="visitType" id="visitType" required>
+                                                                <option value="">Select</option>
+                                                                <option value="New Patient">New Patient</option>
+                                                                <option value="Follow-up">Follow-up</option>
+                                                        </select>
+                                                </label><br>
+                                                <div id="followUpSection" style="display:none;">
+                                                        <label>Previous OP Card Number<br><input type="text" name="followUpOpCardNumber" id="followUpOpCardNumber"></label><br>
+                                                </div>
+                                        </fieldset>
+                                        <button type="submit">Book OP</button>
+                                </form>
+                                <div id="formResult"></div>
+                                <script>
+                                // Calculate age from DOB
+                                document.getElementById('dob').addEventListener('change', function() {
+                                    const dob = new Date(this.value);
+                                    if (!isNaN(dob)) {
+                                        const age = Math.floor((Date.now() - dob.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+                                        document.getElementById('age').value = age;
+                                    }
+                                });
+                                // Show/hide follow-up section
+                                document.getElementById('visitType').addEventListener('change', function() {
+                                    document.getElementById('followUpSection').style.display = this.value === 'Follow-up' ? '' : 'none';
+                                });
+                                // AJAX form submit for better UX
+                                document.getElementById('opBookingForm').addEventListener('submit', async function(e) {
+                                    e.preventDefault();
+                                    const form = e.target;
+                                    const data = new FormData(form);
+                                    document.getElementById('formResult').textContent = 'Submitting...';
+                                    try {
+                                        const res = await fetch(form.action, {
+                                            method: 'POST',
+                                            body: data
+                                        });
+                                        const result = await res.json();
+                                        if (result.success) {
+                                            document.getElementById('formResult').innerHTML = `<span style='color:green'>Booking successful! Your OP Card Number: <b>${result.opCardNumber}</b></span>`;
+                                            form.reset();
+                                            document.getElementById('age').value = '';
+                                            document.getElementById('followUpSection').style.display = 'none';
+                                        } else {
+                                            document.getElementById('formResult').innerHTML = `<span style='color:red'>${result.error || 'Booking failed.'}</span>`;
+                                        }
+                                    } catch (err) {
+                                        document.getElementById('formResult').innerHTML = `<span style='color:red'>Error: ${err.message}</span>`;
+                                    }
+                                });
+                                </script>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MYOPcard. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

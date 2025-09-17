@@ -1,0 +1,59 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7fafd;
+    color: #222;
+    line-height: 1.6;
+}
+
+.hospital-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hospital-card-cmr {
+    background: linear-gradient(90deg, #e0e7ff 0%, #f0f7ff 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba(56,198,217,0.10);
+    padding: 2.2rem 2.5rem 1.5rem 2.5rem;
+    margin-top: 2.5rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.hospital-card-cmr:hover {
+    box-shadow: 0 8px 32px rgba(56,198,217,0.18);
+    transform: translateY(-4px) scale(1.03);
+}
+.hospital-card-header {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #23272f;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.03em;
+}
+.hospital-card-location {
+    font-size: 1.1rem;
+    color: #4f8cff;
+    margin-bottom: 1.5rem;
+}
+.hospital-card-btn {
+    
+    display: inline-block;
+    padding: 0.8rem 2.2rem;
+    background: linear-gradient(90deg, #38c6d9 0%, #4f8cff 100%);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 2rem;
+    box-shadow: 0 2px 8px rgba(56,198,217,0.13);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+.hospital-card-btn:hover {
+    background: linear-gradient(90deg, #4f8cff 0%, #38c6d9 100%);
+    transform: translateY(-2px) scale(1.04);
+}

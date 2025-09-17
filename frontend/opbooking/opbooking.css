@@ -1,0 +1,121 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7fafd;
+    color: #222;
+    line-height: 1.6;
+}
+.hero {
+    background: linear-gradient(90deg, #4f8cff 0%, #38c6d9 100%);
+    color: #fff;
+    text-align: center;
+    padding: 3rem 1rem 2rem 1rem;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 4px 24px rgba(79,140,255,0.1);
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.section {
+    margin: 2.5rem 0;
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 12px rgba(56,198,217,0.07);
+    padding: 2rem 1.5rem;
+}
+form#opBookingForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+form#opBookingForm fieldset {
+    border: none;
+    background: #f0f7ff;
+    border-radius: 1rem;
+    margin-bottom: 1.2rem;
+    padding: 1.2rem 1rem 1rem 1rem;
+    box-shadow: 0 1px 6px rgba(79,140,255,0.07);
+}
+form#opBookingForm legend {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #38c6d9;
+    margin-bottom: 0.7rem;
+}
+form#opBookingForm label {
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+}
+form#opBookingForm input[type="text"],
+form#opBookingForm input[type="date"],
+form#opBookingForm input[type="number"],
+form#opBookingForm input[type="email"],
+form#opBookingForm input[type="tel"],
+form#opBookingForm textarea,
+form#opBookingForm select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #b3d1f7;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-top: 0.2rem;
+    background: #f7fafd;
+    transition: border 0.2s;
+}
+form#opBookingForm input[type="text"]:focus,
+form#opBookingForm input[type="date"]:focus,
+form#opBookingForm input[type="number"]:focus,
+form#opBookingForm input[type="email"]:focus,
+form#opBookingForm input[type="tel"]:focus,
+form#opBookingForm textarea:focus,
+form#opBookingForm select:focus {
+    border: 1.5px solid #38c6d9;
+    outline: none;
+}
+form#opBookingForm textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+form#opBookingForm input[type="file"] {
+    background: #f7fafd;
+    border: none;
+    margin-top: 0.2rem;
+}
+form#opBookingForm button[type="submit"] {
+    background: linear-gradient(90deg, #38c6d9 0%, #4f8cff 100%);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.9rem 2.5rem;
+    margin-top: 1.2rem;
+    box-shadow: 0 2px 8px rgba(56,198,217,0.13);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+form#opBookingForm button[type="submit"]:hover {
+    background: linear-gradient(90deg, #4f8cff 0%, #38c6d9 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+#formResult {
+    margin-top: 1.2rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+#followUpSection {
+    display: none;
+}
+@media (max-width: 700px) {
+    .container {
+        padding: 1rem 0.5rem;
+    }
+    .section {
+        padding: 1.2rem 0.7rem;
+    }
+    form#opBookingForm button[type="submit"] {
+        width: 100%;
+    }
+}
