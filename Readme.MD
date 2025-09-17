@@ -36,4 +36,4 @@ This project is licensed under the MIT License.
 
 ---
 
-*Replace placeholders with your actual project details as needed.*
+All Rights reserved to MyOpCard Organization ---
