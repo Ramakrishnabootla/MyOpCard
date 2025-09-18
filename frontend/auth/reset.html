@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reset Password - MyOpCard</title>
+  <link rel="stylesheet" href="../shared/base.css" />
+  <link rel="stylesheet" href="./auth.css" />
+  <script defer src="../shared/ui.js"></script>
+  <script defer src="./auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('resetForm');
+      const errorEl = document.getElementById('error');
+      const successEl = document.getElementById('success');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.style.display = 'none'; successEl.style.display = 'none';
+        try { await Auth.handleReset(form, successEl, errorEl); } catch (err) { errorEl.textContent = err.message; errorEl.style.display = 'block'; }
+      });
+    });
+  </script>
+  <style> .brand { text-align:center; margin-top:1rem; color:#6b7280; } </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand">MyOpCard</div>
+    <div class="card">
+      <h1 class="title">Reset password</h1>
+      <div id="error" class="error"></div>
+      <div id="success" class="success">Password updated. You can now <a class="link" href="./login.html">log in</a>.</div>
+      <form id="resetForm">
+        <div class="field">
+          <label for="password">New password</label>
+          <input type="password" id="password" name="password" minlength="8" required />
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <input type="password" id="confirm" name="confirm" minlength="8" required />
+        </div>
+        <button type="submit">Reset password</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - MyOpCard</title>
+  <link rel="stylesheet" href="../shared/base.css" />
+  <link rel="stylesheet" href="./auth.css" />
+  <script defer src="../shared/ui.js"></script>
+  <script defer src="./auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('signupForm');
+      const errorEl = document.getElementById('error');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+        try { await Auth.handleSignup(form, errorEl); } catch (err) { errorEl.textContent = err.message; errorEl.style.display = 'block'; }
+      });
+    });
+  </script>
+  <style> .brand { text-align:center; margin-top:1rem; color:#6b7280; } </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand">MyOpCard</div>
+    <div class="card">
+      <h1 class="title">Create your account</h1>
+      <div id="error" class="error"></div>
+      <form id="signupForm">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" minlength="8" required />
+        </div>
+        <button type="submit">Create account</button>
+      </form>
+      <div class="subtext">
+        Already have an account? <a class="link" href="./login.html">Log in</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+

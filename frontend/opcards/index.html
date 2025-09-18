@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OP Cards - MyOpCard</title>
+  <link rel="stylesheet" href="../shared/base.css" />
+  <link rel="stylesheet" href="./opcards.css" />
+  <script defer src="../shared/ui.js"></script>
+  <script defer src="./opcards.js"></script>
+  <style>
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,.5); display:none; padding: 1rem; }
+    .modal .inner { max-width: 560px; margin: 4rem auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">Your OP Cards</div>
+      <div class="row">
+        <a class="btn secondary" href="/frontend/dashboard.html">Dashboard</a>
+        <button class="btn" id="add">Add OP Card</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="grid" class="grid"></div>
+      <div id="pagination" class="pagination"></div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="inner">
+      <div class="card">
+        <h3 id="modalTitle" class="title">Add OP Card</h3>
+        <div id="error" class="error"></div>
+        <form id="form">
+          <div class="row">
+            <div class="field">
+              <label>Patient Name</label>
+              <input name="patientName" required />
+            </div>
+            <div class="field">
+              <label>Age</label>
+              <input type="number" name="age" min="0" max="150" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Gender</label>
+              <select name="gender" required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Mobile</label>
+              <input name="mobile" placeholder="e.g. +911234567890" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Department</label>
+              <input name="department" required />
+            </div>
+            <div class="field">
+              <label>Doctor</label>
+              <input name="doctor" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>OP Number</label>
+              <input name="opNumber" required />
+            </div>
+            <div class="field">
+              <label>Visit Date</label>
+              <input type="date" name="visitDate" required />
+            </div>
+          </div>
+          <div class="field">
+            <label>Notes</label>
+            <textarea name="notes"></textarea>
+          </div>
+          <div class="row">
+            <button class="btn" type="submit">Save</button>
+            <button class="btn secondary" id="close" type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="viewModal" class="modal">
+    <div class="inner">
+      <div id="view"></div>
+      <div class="card" style="margin-top: .6rem">
+        <button class="btn secondary" id="closeView" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Saved</div>
+</body>
+</html>
+
+
