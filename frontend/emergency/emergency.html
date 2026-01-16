@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wheelchair & Emergency Requests – MYOPcard</title>
+    <link rel="stylesheet" href="../shared/base.css">
     <link rel="stylesheet" href="emergency.css">
+    <script defer src="../shared/ui.js"></script>
+    <script defer src="emergency.js"></script>
+    <style>
+        .field.flex-1 { flex: 1; }
+        .field.flex-2 { flex: 2; }
+        .card.margin-top-1rem { margin-top: 1rem; }
+        .title.margin-bottom-0-5rem { margin: 0 0 .5rem; }
+    </style>
 </head>
 <body>
     <header class="hero">
@@ -16,8 +25,35 @@
     <main>
         <section class="section">
             <div class="container">
-                <!-- Add emergency request form or info here -->
-                <p>Feature coming soon.</p>
+                <div class="card">
+                    <h2 class="title">Request Help</h2>
+                    <form id="emForm">
+                        <div class="row">
+                            <div class="field flex-1">
+                                <label for="type">Type</label>
+                                <select id="type" required title="Select the type of emergency">
+                                    <option value="">Select</option>
+                                    <option>Wheelchair</option>
+                                    <option>Stretcher</option>
+                                    <option>Immediate Nurse</option>
+                                </select>
+                            </div>
+                            <div class="field flex-2">
+                                <label for="location">Location</label>
+                                <input id="location" placeholder="e.g. OPD Entrance" required />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="notes">Notes</label>
+                            <textarea id="notes" placeholder="Any extra info"></textarea>
+                        </div>
+                        <button class="btn" type="submit">Send Request</button>
+                    </form>
+                </div>
+                <div class="card margin-top-1rem">
+                    <h3 class="title margin-bottom-0-5rem">Your emergency requests</h3>
+                    <ul id="emList"></ul>
+                </div>
             </div>
         </section>
     </main>
@@ -26,5 +62,6 @@
             <p>&copy; 2025 MYOPcard. All rights reserved.</p>
         </div>
     </footer>
+    <div id="toast" class="toast">Saved</div>
 </body>
 </html>

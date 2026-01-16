@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Delivery – MYOPcard</title>
+    <link rel="stylesheet" href="../shared/base.css">
     <link rel="stylesheet" href="food.css">
+    <script defer src="../shared/ui.js"></script>
+    <script defer src="food.js"></script>
 </head>
 <body>
     <header class="hero">
@@ -16,8 +19,30 @@
     <main>
         <section class="section">
             <div class="container">
-                <!-- Add food ordering form or info here -->
-                <p>Feature coming soon.</p>
+                <div class="card">
+                    <h2 class="title">Order Food</h2>
+                    <form id="foodForm">
+                        <div class="row">
+                            <div class="field" style="flex:1;">
+                                <label>Ward/Bed</label>
+                                <input id="ward" placeholder="e.g. Ward A - Bed 12" required />
+                            </div>
+                            <div class="field" style="flex:2;">
+                                <label>Item</label>
+                                <input id="item" placeholder="e.g. Veg Meal" required />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Notes</label>
+                            <textarea id="notes" placeholder="Any special instructions"></textarea>
+                        </div>
+                        <button class="btn" type="submit">Place Order</button>
+                    </form>
+                </div>
+                <div class="card" style="margin-top:1rem;">
+                    <h3 class="title" style="margin:0 0 .5rem;">Your recent food requests</h3>
+                    <ul id="foodList"></ul>
+                </div>
             </div>
         </section>
     </main>
@@ -26,5 +51,6 @@
             <p>&copy; 2025 MYOPcard. All rights reserved.</p>
         </div>
     </footer>
+    <div id="toast" class="toast">Saved</div>
 </body>
 </html>

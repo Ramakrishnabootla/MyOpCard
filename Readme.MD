@@ -37,3 +37,4 @@ This project is licensed under the MIT License.
 ---
 
 All Rights reserved to MyOpCard Organization ---
+© 2024 MyOpCard Organization

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicine Access – MYOPcard</title>
+    <link rel="stylesheet" href="../shared/base.css">
     <link rel="stylesheet" href="medicine.css">
+    <script defer src="../shared/ui.js"></script>
+    <script defer src="medicine.js"></script>
 </head>
 <body>
     <header class="hero">
@@ -16,8 +19,30 @@
     <main>
         <section class="section">
             <div class="container">
-                <!-- Add medicine request form or info here -->
-                <p>Feature coming soon.</p>
+                <div class="card">
+                    <h2 class="title">Request Medicines</h2>
+                    <form id="medForm">
+                        <div class="row">
+                            <div class="field" style="flex:1;">
+                                <label>Ward/Bed</label>
+                                <input id="ward" placeholder="e.g. Ward B - Bed 07" required />
+                            </div>
+                            <div class="field" style="flex:2;">
+                                <label>Medicines</label>
+                                <input id="meds" placeholder="e.g. Paracetamol 500mg x 2" required />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Notes</label>
+                            <textarea id="notes" placeholder="Any special instructions"></textarea>
+                        </div>
+                        <button class="btn" type="submit">Submit Request</button>
+                    </form>
+                </div>
+                <div class="card" style="margin-top:1rem;">
+                    <h3 class="title" style="margin:0 0 .5rem;">Your recent medicine requests</h3>
+                    <ul id="medList"></ul>
+                </div>
             </div>
         </section>
     </main>
@@ -26,5 +51,6 @@
             <p>&copy; 2025 MYOPcard. All rights reserved.</p>
         </div>
     </footer>
+    <div id="toast" class="toast">Saved</div>
 </body>
 </html>
