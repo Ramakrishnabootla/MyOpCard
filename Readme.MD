@@ -38,3 +38,20 @@ This project is licensed under the MIT License.
 
 All Rights reserved to MyOpCard Organization ---
 © 2024 MyOpCard Organization
+
+
+backend/
+├── config/database.js      # DB connection
+├── controllers/
+│   └── patientController.js # Business logic
+├── middlewares/
+│   ├── errorHandler.js     # Error handling
+│   ├── upload.js          # File uploads
+│   └── validation.js      # Input validation
+├── models/Patient.js      # Data model
+├── routes/patients.js     # API routes
+├── utils/                 # Utilities
+├── app.js                 # Main app
+├── .env                   # Environment vars
+├── .gitignore            # Git ignore rules
+└── README.md             # Documentation

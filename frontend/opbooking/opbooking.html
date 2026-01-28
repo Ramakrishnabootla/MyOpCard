@@ -16,7 +16,7 @@
     <main>
         <section class="section">
             <div class="container">
-                                <form id="opBookingForm" action="http://localhost:5000/api/opbooking" method="POST" enctype="multipart/form-data" autocomplete="off">
+                                <form id="opBookingForm" action="http://localhost:5000/api/patients" method="POST" enctype="multipart/form-data" autocomplete="off">
                                         <h2>📋 OP Booking Form</h2>
                                         <fieldset>
                                             <legend>👤 Patient Details</legend>
@@ -48,14 +48,15 @@
                                                                 <option value="Cardiology">Cardiology</option>
                                                                 <option value="Orthopedics">Orthopedics</option>
                                                                 <option value="Pediatrics">Pediatrics</option>
-                                                                <option value="Gynecology">Gynecology</option>
-                                                                <option value="Other">Other</option>
+                                                                <option value="Dermatology">Dermatology</option>
+                                                                <option value="ENT">ENT</option>
+                                                                <option value="Ophthalmology">Ophthalmology</option>
                                                         </select>
                                                 </label><br>
                                                 <label>Visit Type*<br>
                                                         <select name="visitType" id="visitType" required>
                                                                 <option value="">Select</option>
-                                                                <option value="New Patient">New Patient</option>
+                                                                <option value="New">New Patient</option>
                                                                 <option value="Follow-up">Follow-up</option>
                                                         </select>
                                                 </label><br>
@@ -92,12 +93,18 @@
                                         });
                                         const result = await res.json();
                                         if (result.success) {
-                                            document.getElementById('formResult').innerHTML = `<span style='color:green'>Booking successful! Your OP Card Number: <b>${result.opCardNumber}</b></span>`;
+                                            document.getElementById('formResult').innerHTML = `<span style='color:green'>Booking successful! Your OP Card Number: <b>${result.data.opCardNumber}</b></span>`;
                                             form.reset();
                                             document.getElementById('age').value = '';
                                             document.getElementById('followUpSection').style.display = 'none';
                                         } else {
-                                            document.getElementById('formResult').innerHTML = `<span style='color:red'>${result.error || 'Booking failed.'}</span>`;
+                                            // Handle validation errors
+                                            if (result.errors) {
+                                                const errorMessages = result.errors.map(err => err.msg || err.message).join('<br>');
+                                                document.getElementById('formResult').innerHTML = `<span style='color:red'>${errorMessages}</span>`;
+                                            } else {
+                                                document.getElementById('formResult').innerHTML = `<span style='color:red'>${result.message || 'Booking failed.'}</span>`;
+                                            }
                                         }
                                     } catch (err) {
                                         document.getElementById('formResult').innerHTML = `<span style='color:red'>Error: ${err.message}</span>`;
